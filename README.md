@@ -1,3 +1,7 @@
+<!-- badges: start -->
+[![R build status](https://github.com/ropenscilabs/statistical-software-review/workflows/R-CMD-check/badge.svg)](https://github.com/ropenscilabs/statistical-software-review/actions)
+<!-- badges: end -->
+
 # Statistical Software Review
 
 This repository is intended for submissions to rOpenScis' expanded system of
