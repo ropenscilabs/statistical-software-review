@@ -32,11 +32,73 @@ list_categories <- function () {
 #' standards
 #' @noRd
 dl_standards <- function (category = "general") {
-    categories <- tolower (list_categories ())
-    category <- match.arg (tolower (category), categories)
     u <- paste0 (base_url (raw = TRUE),
                  "master/standards/", category, ".Rmd")
     tmp <- tempfile (fileext = ".Rmd")
     ret <- utils::download.file (u, destfile = tmp)
     readLines (tmp)
+}
+
+#' @param s Full text describing and including a set of standards downloaded
+#' with `dl_standards`
+#' @return The standards only extracted from `s`, formatted as checklist items.
+#' @noRd
+format_standards <- function (s) {
+    index1 <- grep ("\\s?-\\s\\*\\*", s)
+    index_sp <- grep ("^\\s*$", s)
+    index2 <- vapply (seq_along (index1), function (i) {
+                      ret <- index_sp [which (index_sp > index1 [i]) [1]]
+                      if (is.na (ret)) {
+                          if (i == length (index1)) {
+                              ret <- length (s)
+                          } else {
+                              ret <- index1 [i + 1] - 1L
+                          }
+                      } else if (i < length (index1)) {
+                          if (ret > index1 [i + 1])
+                              ret <- index1 [i + 1] - 1L
+                      }
+                      return (ret)},
+                      integer (1))
+
+    s <- vapply (seq_along (index1), function (i)
+                 paste0 (s [index1 [i]:index2 [i]], collapse = " "),
+                 character (1))
+    s <- gsub ("\\s*\\-\\s+\\*\\*", "- \\[ \\] **", s)
+
+    # index sub-standards
+    index <- grep ("\\-\\s?\\[\\s\\]\\s\\*\\*[A-Z][0-9]\\.[0-9]+[a-z]\\*\\*", s)
+    s [index] <- paste0 ("    ", s [index])
+
+    return (s)
+}
+
+#' Obtain a set of one or more category-specific standards as a checklist, and
+#' store the result in the local clipboard ready to paste.
+#' @param category One of the names of files given in the directory contents of
+#' \url{https://github.com/ropenscilabs/statistical-software-review-book/tree/master/standards},
+#' each of which is ultimately formatted into a sub-section of the standards.
+#' @return A character vector containing a markdown-style checklist of general
+#' standards along with standards for any additional categories.
+#' @export
+rssr_standards_checklist <- function (category = NULL) {
+    s <- dl_standards (category = "general") %>%
+        format_standards ()
+    s <- c ("### General Standards", "", s)
+
+    if (!is.null (category)) {
+        categories <- tolower (list_categories ())
+        for (i in seq_along (category)) {
+            category [i] <- match.arg (tolower (category [i]), categories)
+            s_cat <- dl_standards (category = category [i]) %>%
+                format_standards ()
+            stitle <- paste0 ("### ", category [i], " Standards")
+            s <- c (s, " ", stitle, " ", s_cat)
+        }
+    }
+
+    message (cli::col_cyan (cli::symbol$star),
+             " Markdown-formatted checklist copied to clipboard")
+
+    invisible (clipr::write_clip (s))
 }
