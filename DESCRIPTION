@@ -10,6 +10,9 @@ Authors@R:
 Description: Companion package to 'rOpenSci' statistical software review
     project.
 License: MIT + file LICENSE
+Imports:
+    httr,
+    magrittr
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
