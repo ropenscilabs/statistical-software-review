@@ -88,11 +88,11 @@ Hopefully we’ve made that pretty easy with these steps:
     # install.packages("remotes")
     remotes::install_github("ropenscilabs/statistical-software-review")
     library(statsoftrev)
-    x <- rssr_standards_checklist (category = c ("eda", "ml")) # EAD + Machine Learning Software, for example
+    # EDA + Machine Learning Software, for example:
+    x <- rssr_standards_checklist (category = c ("eda", "ml"))
 
 As demonstrated above, that will give you a copy of all relevant
 standards for the specified category (or categories) in your clipboard
-which you can paste anywhere. To save the checklist directly to a local
-file, simply type:
-
-    writeLines (x, file = "/<local>/<file>/<name>.md")
+which you can paste anywhere. The function also has a `filename`
+argument which can be used to save the checklist directly to a local
+file.
