@@ -78,6 +78,36 @@ format_standards <- function (s) {
     return (s)
 }
 
+category_titles_urls <- function (category) {
+    ret <- list ()
+    u_base = paste0 ("https://ropenscilabs.github.io/",
+                     "statistical-software-review-book/",
+                     "standards.html#")
+
+    if (category == "bayesian")
+        ret <- list (title = "Bayesian",
+                     url = paste0 (u_base, "bayesian-and-monte-carlo-software"))
+    else if (category == "eda")
+        ret <- list (title = "EDA",
+                     url = paste0 (u_base, "exploratory-data-analysis"))
+    else if (category == "ml")
+        ret <- list (title = "Machine Learning",
+                     url = paste0 (u_base, "machine-learning-software"))
+    else if (category == "regression")
+        ret <- list (title = "Regression and Supervised Learning",
+                     url = paste0 (u_base, "regression-and-supervised-learning"))
+    else if (category == "time-series")
+        ret <- list (title = "Time Series",
+                     url = paste0 (u_base, "time-series-software"))
+    else if (category == "unsupervised")
+        ret <- list (title = paste0 ("Dimensionality Reduction, Clustering, ",
+                                     "and Unsupervised Learning"),
+                     url = paste0 (u_base, "dimensionality-reduction-",
+                                   "clustering-and-unsupervised-learning"))
+
+    return (ret)
+}
+
 #' Obtain a set of one or more category-specific standards as a checklist, and
 #' store the result in the local clipboard ready to paste.
 #' @param category One of the names of files given in the directory contents of
@@ -89,15 +119,24 @@ format_standards <- function (s) {
 rssr_standards_checklist <- function (category = NULL) {
     s <- dl_standards (category = "general")
     s <- format_standards (s)
-    s <- c ("## General Standards", "", s)
+    u <- paste0 ("https://ropenscilabs.github.io/",
+                 "statistical-software-review-book/",
+                 "standards.html#general-standards-for-statistical-software")
+    s <- c (paste0 ("## [General Standards](", u, ")"),
+            "", s, "")
 
     if (!is.null (category)) {
         categories <- tolower (list_categories ())
         for (i in seq_along (category)) {
             category [i] <- match.arg (tolower (category [i]), categories)
+            cat_title <- category_titles_urls (category [i])
             s_cat <- dl_standards (category = category [i])
             s_cat <- format_standards (s_cat)
-            stitle <- paste0 ("## ", category [i], " Standards")
+            stitle <- paste0 ("## [",
+                              cat_title$title,
+                              " Standards](",
+                              cat_title$url,
+                              ")")
             s <- c (s, "", "---", "", stitle, "", s_cat)
         }
     }
