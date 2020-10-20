@@ -44,7 +44,7 @@ dl_standards <- function (category = "general") {
 #' @return The standards only extracted from `s`, formatted as checklist items.
 #' @noRd
 format_standards <- function (s) {
-    index1 <- grep ("\\s?-\\s\\*\\*", s)
+    index1 <- grep ("\\s?-\\s\\*\\*[A-Z]", s)
     index_sp <- grep ("^\\s*$", s)
     index2 <- vapply (seq_along (index1), function (i) {
                       ret <- index_sp [which (index_sp > index1 [i]) [1]]
@@ -67,7 +67,7 @@ format_standards <- function (s) {
     s <- gsub ("\\s*\\-\\s+\\*\\*", "- \\[ \\] **", s)
 
     # index sub-standards
-    index <- grep ("\\-\\s?\\[\\s\\]\\s\\*\\*[A-Z][0-9]\\.[0-9]+[a-z]\\*\\*", s)
+    index <- grep ("\\-\\s?\\[\\s\\]\\s\\*\\*[A-Z]+[0-9]\\.[0-9]+[a-z]\\*\\*", s)
     s [index] <- paste0 ("    ", s [index])
 
     return (s)
