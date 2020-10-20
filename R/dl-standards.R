@@ -35,7 +35,9 @@ dl_standards <- function (category = "general") {
     u <- paste0 (base_url (raw = TRUE),
                  "master/standards/", category, ".Rmd")
     tmp <- tempfile (fileext = ".Rmd")
-    ret <- utils::download.file (u, destfile = tmp)
+    ret <- utils::download.file (u, destfile = tmp, quiet = TRUE)
+    cli::cli_alert_success ("Downloaded {category} standards")
+
     readLines (tmp)
 }
 
@@ -144,8 +146,7 @@ rssr_standards_checklist <- function (category = NULL) {
         }
     }
 
-    message (cli::col_cyan (cli::symbol$star),
-             " Markdown-formatted checklist copied to clipboard")
+    cli::cli_alert_info ("Markdown-formatted checklist copied to clipboard")
 
     invisible (clipr::write_clip (s))
 }
