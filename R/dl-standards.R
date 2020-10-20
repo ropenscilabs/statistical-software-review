@@ -125,6 +125,9 @@ rssr_standards_checklist <- function (category = NULL) {
     s <- c (paste0 ("## [General Standards](", u, ")"),
             "", s, "")
 
+    if (any (grepl ("general", category, ignore.case = TRUE)))
+        category <- category [-grep ("general", category, ignore.case = TRUE)]
+
     if (!is.null (category)) {
         categories <- tolower (list_categories ())
         for (i in seq_along (category)) {
