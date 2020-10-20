@@ -79,3 +79,20 @@ The resultant object is a character vector which starts like this:
     ## [4] "- [ ] **G1.0** *Software should use [`roxygen`](https://roxygen2.r-lib.org/) for all   documentation.*"                                                         
     ## [5] "    - [ ] **G1.0a** *All internal (non-exported) functions should also be documented       in standard [`roxygen`](https://roxygen2.r-lib.org/) format.* "      
     ## [6] "- [ ] **G1.1** *Software should include all code necessary to reproduce results which   form the basis of performance claims made in associated publications.* "
+
+So I’m reviewing a package, what should I do?
+---------------------------------------------
+
+Hopefully we’ve made that pretty easy with these steps:
+
+    # install.packages("remotes")
+    remotes::install_github("ropenscilabs/statistical-software-review")
+    library(statsoftrev)
+    x <- rssr_standards_checklist (category = c ("eda", "ml")) # EAD + Machine Learning Software, for example
+
+As demonstrated above, that will give you a copy of all relevant
+standards for the specified category (or categories) in your clipboard
+which you can paste anywhere. To save the checklist directly to a local
+file, simply type:
+
+    writeLines (x, file = "/<local>/<file>/<name>.md")

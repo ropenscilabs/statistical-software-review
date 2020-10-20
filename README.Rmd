@@ -41,5 +41,22 @@ The resultant object is a character vector which starts like this:
 head (x)
 ```
 
+## So I'm reviewing a package, what should I do?
+
+Hopefully we've made that pretty easy with these steps:
+
+```{r removes, eval = FALSE}
+# install.packages("remotes")
+remotes::install_github("ropenscilabs/statistical-software-review")
+library(statsoftrev)
+x <- rssr_standards_checklist (category = c ("eda", "ml")) # EAD + Machine Learning Software, for example
+```
+
+As demonstrated above, that will give you a copy of all relevant standards for the specified category (or categories) in your clipboard which you can paste anywhere. To save the checklist directly to a local file, simply type:
+```{r save, eval = FALSE}
+writeLines (x, file = "/<local>/<file>/<name>.md")
+```
+
+
 
 
