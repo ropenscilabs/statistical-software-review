@@ -83,12 +83,13 @@ The resultant object is a character vector which starts like this:
 So I’m reviewing a package, what should I do?
 ---------------------------------------------
 
-Hopefully we’ve made that pretty easy with these steps:
+Hopefully we’ve made that pretty easy with these steps, illustrating how
+to obtain checklists of standards for the two categories of EDA and
+Machine Learning software:
 
     # install.packages("remotes")
     remotes::install_github("ropenscilabs/statistical-software-review")
     library(statsoftrev)
-    # EDA + Machine Learning Software, for example:
     x <- rssr_standards_checklist (category = c ("eda", "ml"))
 
 As demonstrated above, that will give you a copy of all relevant
