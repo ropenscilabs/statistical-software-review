@@ -61,6 +61,11 @@ format_standards <- function (s) {
                       return (ret)},
                       integer (1))
 
+    # include 3rd- and 4th-level sub-section headings:
+    index3 <- grep ("^\\#\\#\\#\\s|^\\#\\#\\#\\#\\s", s)
+    index1 <- sort (c (index1, index3))
+    index2 <- sort (c (index2, index3))
+
     s <- vapply (seq_along (index1), function (i)
                  paste0 (s [index1 [i]:index2 [i]], collapse = " "),
                  character (1))
@@ -84,7 +89,7 @@ format_standards <- function (s) {
 rssr_standards_checklist <- function (category = NULL) {
     s <- dl_standards (category = "general")
     s <- format_standards (s)
-    s <- c ("### General Standards", "", s)
+    s <- c ("## General Standards", "", s)
 
     if (!is.null (category)) {
         categories <- tolower (list_categories ())
@@ -92,8 +97,8 @@ rssr_standards_checklist <- function (category = NULL) {
             category [i] <- match.arg (tolower (category [i]), categories)
             s_cat <- dl_standards (category = category [i])
             s_cat <- format_standards (s_cat)
-            stitle <- paste0 ("### ", category [i], " Standards")
-            s <- c (s, " ", stitle, " ", s_cat)
+            stitle <- paste0 ("## ", category [i], " Standards")
+            s <- c (s, "", "---", "", stitle, "", s_cat)
         }
     }
 
