@@ -17,8 +17,8 @@ base_url <- function (raw = FALSE) {
 #' @noRd
 list_categories <- function () {
     u <- paste0 (base_url (), "git/trees/master?recursive=1")
-    x <- httr::GET (u) %>%
-        httr::content ()
+    x <- httr::GET (u)
+    x <- httr::content (x)
     index <- which (vapply (x$tree, function (i)
                             grepl ("^standards\\/", i$path),
                             logical (1)))
@@ -82,16 +82,16 @@ format_standards <- function (s) {
 #' standards along with standards for any additional categories.
 #' @export
 rssr_standards_checklist <- function (category = NULL) {
-    s <- dl_standards (category = "general") %>%
-        format_standards ()
+    s <- dl_standards (category = "general")
+    s <- format_standards (s)
     s <- c ("### General Standards", "", s)
 
     if (!is.null (category)) {
         categories <- tolower (list_categories ())
         for (i in seq_along (category)) {
             category [i] <- match.arg (tolower (category [i]), categories)
-            s_cat <- dl_standards (category = category [i]) %>%
-                format_standards ()
+            s_cat <- dl_standards (category = category [i])
+            s_cat <- format_standards (s_cat)
             stitle <- paste0 ("### ", category [i], " Standards")
             s <- c (s, " ", stitle, " ", s_cat)
         }

@@ -13,8 +13,7 @@ License: MIT + file LICENSE
 Imports:
     cli,
     clipr,
-    httr,
-    magrittr
+    httr
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
