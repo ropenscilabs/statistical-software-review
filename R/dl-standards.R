@@ -146,3 +146,28 @@ rssr_standards_checklist <- function (category = NULL) {
 
     invisible (clipr::write_clip (s))
 }
+
+#' List all currently available categories and associated URLs to full category
+#' descriptions.
+#' @return A `data.frame` with 3 columns of "category" (the categories to be
+#' submitted to \link{rssr_standards_checklist}), "title" (the full title), and
+#' "url".
+#' @export
+rssr_available_categories <- function () {
+    cats <- list_categories ()
+    cat_full <- unlist (lapply (cats, function (i)
+                                category_titles_urls (i)))
+
+    cat_full <- c ("General",
+                   paste0 ("https://ropenscilabs.github.io/",
+                           "statistical-software-review-book/",
+                           "standards.html#",
+                           "general-standards-for-statistical-software"),
+                   cat_full)
+
+    index <- seq (length (cat_full) / 2) * 2
+    data.frame (category = cats,
+                title = cat_full [index - 1],
+                url = cat_full [index],
+                stringsAsFactors = FALSE)
+}
