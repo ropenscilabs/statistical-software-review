@@ -115,10 +115,12 @@ category_titles_urls <- function (category) {
 #' @param category One of the names of files given in the directory contents of
 #' \url{https://github.com/ropenscilabs/statistical-software-review-book/tree/master/standards},
 #' each of which is ultimately formatted into a sub-section of the standards.
+#' @param filename Optional name of local file to save markdown-formatted
+#' checklist. A suffix of `.md` will be automatically appended.
 #' @return A character vector containing a markdown-style checklist of general
 #' standards along with standards for any additional categories.
 #' @export
-rssr_standards_checklist <- function (category = NULL) {
+rssr_standards_checklist <- function (category = NULL, filename = NULL) {
     s <- dl_standards (category = "general")
     s <- format_standards (s)
     u <- paste0 ("https://ropenscilabs.github.io/",
@@ -147,6 +149,11 @@ rssr_standards_checklist <- function (category = NULL) {
     }
 
     cli::cli_alert_info ("Markdown-formatted checklist copied to clipboard")
+
+    if (!is.null (filename)) {
+        filename <- paste0 (tools::file_path_sans_ext (filename), ".md")
+        writeLines (text = s, con = filename)
+    }
 
     invisible (clipr::write_clip (s))
 }
