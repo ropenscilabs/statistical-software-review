@@ -80,6 +80,9 @@ format_standards <- function (s) {
 
     s <- add_space_around_sections (s)
 
+    # finally reduce white space
+    s <- gsub ("\\s+", " ", s)
+
     return (s)
 }
 
