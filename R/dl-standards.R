@@ -71,11 +71,14 @@ format_standards <- function (s) {
     s <- vapply (seq_along (index1), function (i)
                  paste0 (s [index1 [i]:index2 [i]], collapse = " "),
                  character (1))
+    # convert dot points to checklist items:
     s <- gsub ("\\s*\\-\\s+\\*\\*", "- \\[ \\] **", s)
 
-    # index sub-standards
+    # indent sub-standards
     index <- grep ("\\-\\s?\\[\\s\\]\\s\\*\\*[A-Z]+[0-9]\\.[0-9]+[a-z]\\*\\*", s)
     s [index] <- paste0 ("    ", s [index])
+
+    s <- add_space_around_sections (s)
 
     return (s)
 }
@@ -181,4 +184,36 @@ rssr_available_categories <- function () {
                 title = cat_full [index - 1],
                 url = cat_full [index],
                 stringsAsFactors = FALSE)
+}
+
+#' @param s One set of standards with no spaces between sections or lines.
+#' @return Expanded version with each sub-section having a blank line either
+#' side of it.
+#' @noRd
+add_space_around_sections <- function (s) {
+    index_hdr <- grep ("^\\#\\#\\#\\s|^\\#\\#\\#\\#\\s", s)
+    index_hdr_pre <- index_hdr [index_hdr > 1]
+    index_hdr_post <- index_hdr [index_hdr < length (s)]
+    index_hdr <- sort (c (index_hdr_pre, index_hdr_post))
+    # index_hdr has two values for the position of each sub-section header
+    index <- sort (c (seq (s), index_hdr))
+    len <- length (index) # length of final version
+
+    s_index <- which (!duplicated (index))
+    # all section breaks are then first element of index triplets; these need to
+    # be moved to second position to give blank line both before and after
+    index <- which (diff (s_index) > 1)
+    index <- index [index > 1] # don't move opening sub-section
+    s_index [index] <- s_index [index] + 1
+
+    snew <- rep ("", len)
+    snew [s_index] <- s
+
+    # that can result in double empty lines which are then reduced to singles
+    # only
+    index1 <- which (snew == "")
+    index2 <- which (diff (index1) == 1)
+    snew <- snew [-(index1 [index2])]
+
+    return (snew)
 }
