@@ -4,7 +4,7 @@
 #' @param file Name of local file containing a completed checklist. Must be a
 #' markdown document in `.md` format, not `.Rmd` or anything else.
 #' @export
-rssr_checklist <- function (file) {
+rssr_checklist_check <- function (file) {
     if (!file.exists (file))
         stop ("File [", file, "] does not exist")
 
