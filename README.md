@@ -78,7 +78,7 @@ So I’m reviewing a package, what should I do?
 
 Hopefully we’ve made that pretty easy with these steps.
 
-### Obtain relevant checklists of standards
+### 1. Obtain relevant checklists of standards
 
 You first need to obtain checklists of general and category-specific
 standards relevant to the package. The function
@@ -122,7 +122,7 @@ specified category (or categories) in your clipboard which you can paste
 anywhere. The function also has a `filename` argument which can be used
 to save the checklist directly to a local file.
 
-### Fill Out those checklist
+### 2. Fill out checklists
 
 While it is possible to paste a checklist directly into a github issue
 and complete it there, we recommend that you first save the checklist to
@@ -162,15 +162,13 @@ be considered applicable. In such cases, please simply leave these
 standards unchecked, and alter the relevant text to clarify why you
 think those standards should apply.
 
-### Check the formatting of your checklist
+### 3. Check the formatting of your checklist
 
-One important reason for the use of structured standards and checklists
-is to enable automated analyses of the checklists. This in turn requires
-that all items be in standardised forms. Following the preceding
-instructions should ensure that all aspects of a checklist are in the
-expected form, but we all make mistakes. Never fear, most common
-formatting mistakes can be directly rectified through running an
-additional function, `rssr_checklist_check()`. Simply pass the name of
-the local file containing your checklist, and the file will be updated
+Having completed your checklist, please use one final function,
+`rssr_checklist_check()`, to ensure that common formatting mistakes can
+be rectified. This is important to facilitate our automated analyses of
+checklists and software assessments, through ensuring that all items are
+in standardised formats. Simply pass the name of the local file
+containing your checklist to this function, and the file will be updated
 with any necessary changes, as well as copied again to your local
 clipboard ready to be pasted into the github review issue.
