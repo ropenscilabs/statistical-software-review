@@ -52,11 +52,13 @@ Hopefully we've made that pretty easy with these steps.
 ### 1. Obtain relevant checklists of standards
 
 You first need to obtain checklists of general and category-specific standards
-relevant to the package. The function `rssr_standards_checklist()` converts one
-or more of the currently written standards into a rmarkdown-formatted checklist
-for the benefit of reviewers. These checklists are also copied directly to
-a local clipboard, ready to be pasted directly into a local file or a github
-issue. This function always extracts the checklist of [General
+relevant to the package. The function
+[`rssr_standards_checklist()`](https://ropenscilabs.github.io/statistical-software-review/reference/rssr_standards_checklist.html)
+converts one or more of the currently written standards into
+a rmarkdown-formatted checklist for the benefit of reviewers. These checklists
+are also copied directly to a local clipboard, ready to be pasted directly into
+a local file or a github issue. This function always extracts the checklist of
+[General
 Standards](https://ropenscilabs.github.io/statistical-software-review-book/standards.html#general-standards-for-statistical-software),
 along with any specified categories appended as additional checklists.
 
@@ -75,24 +77,25 @@ head (x)
 ```
 
 The names of the categories are those given in the "category" column of the
-output of `rssr_available_categories()` shown above. Calling that function will
-give you a copy of all relevant standards for the specified category (or
-categories) in your clipboard which you can paste anywhere. The function also
-has a `filename` argument which can be used to save the checklist directly to
-a local file.
+output of
+[`rssr_available_categories()`](https://ropenscilabs.github.io/statistical-software-review/reference/rssr_available_categories.html)
+shown above. Calling that function will give you a copy of all relevant
+standards for the specified category (or categories) in your clipboard which
+you can paste anywhere. The function also has a `filename` argument which can
+be used to save the checklist directly to a local file.
 
 ### 2. Fill out checklists
 
 While it is possible to paste a checklist directly into a github issue and
 complete it there, we recommend that you first save the checklist to a local
-file (using the `file` option of the `rssr_standards_checklist()` function) and
-use that local version to complete your assessment.
-
-Each standard which you judge the software to meet can be checked by replacing
-the space between the open square brackets with an "x". Whether or not the
-checkbox is filled, please replace the text for each standard with a comment
-explaining how the software does or does not fulfil that standard.
-Please do not remove or change the identifiers for each standard.
+file (using the `file` option of the
+[`rssr_standards_checklist()`](https://ropenscilabs.github.io/statistical-software-review/reference/rssr_standards_checklist.html)
+function) and use that local version to complete your assessment. Each standard
+which you judge the software to meet can be checked by replacing the space
+between the open square brackets with an "x". Whether or not the checkbox is
+filled, please replace the text for each standard with a comment explaining how
+the software does or does not fulfil that standard. Please do not remove or
+change the identifiers for each standard.
 
 #### Inapplicable Standards
 
@@ -110,7 +113,7 @@ example:
 That example demonstrates that standards deemed to be inapplicable to a given
 software package should be considered fulfilled and checked appropriately.
 There may of course be standards which are deemed inapplicable, yet which you
-as a review judge should actually be applied. For example, a package may not
+as a reviewer judge should actually be applied. For example, a package may not
 implement extended tests, yet may have several functions which take too long to
 run to be tested within a normal test suite. Such a package should have an
 extended test suite, and so the relevant general standards **G4.10**--**G4.12**
@@ -121,11 +124,11 @@ standards should apply.
 ### 3. Check the formatting of your checklist
 
 Having completed your checklist, please use one final function,
-`rssr_checklist_check()`, to ensure that common formatting mistakes can be
-rectified. This is important to facilitate our automated analyses of checklists
-and software assessments, through ensuring that all items are in standardised
-formats. Simply pass the name of the local file containing your checklist to
-this function, and the file will be updated with any necessary changes, as well
-as copied again to your local clipboard ready to be pasted into the github
-review issue.
+[`rssr_checklist_check()`](https://ropenscilabs.github.io/statistical-software-review/reference/rssr_checklist_check.html),
+to ensure that common formatting mistakes can be rectified. This is important
+to facilitate our automated analyses of checklists and software assessments,
+through ensuring that all items are in standardised formats. Simply pass the
+name of the local file containing your checklist to this function, and the file
+will be updated with any necessary changes, as well as copied again to your
+local clipboard ready to be pasted into the github review issue.
 
