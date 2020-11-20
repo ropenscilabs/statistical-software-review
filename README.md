@@ -131,11 +131,11 @@ a local file (using the `file` option of the
 complete your assessment.
 
 Each standard which you judge the software to meet can be checked by
-filling the space in the open square brackets (“\[ \]”) with an “x”
-(“\[x\]”). Whether or not the checkbox is filled, please replace the
-text for each standard with a comment explaining how the software does
-or does not fulfil that standard. Please do not remove or change the
-identifiers for each standard.
+replacing the space between the open square brackets with an “x”.
+Whether or not the checkbox is filled, please replace the text for each
+standard with a comment explaining how the software does or does not
+fulfil that standard. Please do not remove or change the identifiers for
+each standard.
 
 #### Inapplicable Standards
 
