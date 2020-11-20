@@ -5,8 +5,12 @@
 #' markdown document in `.md` format, not `.Rmd` or anything else.
 #' @export
 rssr_checklist_check <- function (file) {
+
     if (!file.exists (file))
         stop ("File [", file, "] does not exist")
+
+    if (!tools::file_ext (file) == "md")
+        stop ("file must be in '.md' format")
 
     x0 <- readLines (file)
 
