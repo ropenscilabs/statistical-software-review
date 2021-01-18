@@ -2,14 +2,15 @@
 #'
 #' Get values of all `rssr` tags in function documentation
 #'
+#' @importFrom roxygen2 roclet
+#'
 #' @export
 rssr_roclet <- function () {
     roxygen2::roclet ("rssr")
 }
 
-#' roclet_process.roclet_rssr
+#' @importFrom roxygen2 roclet_process
 #'
-#' @inheritParams roxygen2::roclet_process
 #' @export
 roclet_process.roclet_rssr <- function (x, blocks, env, base_path) { # nolint
 
@@ -44,9 +45,8 @@ roclet_process.roclet_rssr <- function (x, blocks, env, base_path) { # nolint
     return (NULL)
 }
 
-#' roclet_output.roclet_rssr
+#' @importFrom roxygen2 roclet_output
 #'
-#' @inheritParams roxygen2::roclet_process
 #' @export
 roclet_output.roclet_rssr <- function (x, results, base_path) { # nolint
     return (NULL)
