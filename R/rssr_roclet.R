@@ -48,6 +48,6 @@ roclet_process.roclet_rssr <- function (x, blocks, env, base_path) { # nolint
 #' @importFrom roxygen2 roclet_output
 #'
 #' @export
-roclet_output.roclet_rssr <- function (x, results, base_path) { # nolint
+roclet_output.roclet_rssr <- function (x, results, base_path, ...) { # nolint
     return (NULL)
 }
