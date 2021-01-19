@@ -1,25 +1,28 @@
 
 #' Parse tests tag
-#' 
+#'
 #' @param x Input
-#' 
+#'
 #' @return Parsed tag
-#' 
+#'
 #' @importFrom roxygen2 roxy_tag_parse
 #' @export
-roxy_tag_parse.roxy_tag_rssr <- function(x) {
+roxy_tag_parse.roxy_tag_rssr <- function(x) { # nolint
     roxygen2::tag_markdown (x)
 }
 
 #' @importFrom roxygen2 roxy_tag_rd
 #' @export
-roxy_tag_rd.roxy_tag_rssr <- function(x, base_path, env) {
+roxy_tag_rd.roxy_tag_rssr <- function(x, base_path, env) { # nolint
   NULL
 }
 
 #' rssr_roclet
 #'
 #' Get values of all `rssr` tags in function documentation
+#'
+#' Note that this function should never need to be called directly. It only
+#' exists to enable "@rssr" tags to be parsed from \pkg{roxygen2} documentation.
 #'
 #' @importFrom roxygen2 roclet
 #'
@@ -42,17 +45,16 @@ roclet_process.roclet_rssr <- function (x, blocks, env, base_path) { # nolint
             next
         }
 
+        #block_title <- roxygen2::block_get_tag_value (block, "title")
         func_name <- block$object$alias
         standards <- roxygen2::block_get_tag_value (block, "rssr")
-
-        block_title <- roxygen2::block_get_tag_value (block, "title")
-        block_backref <- basename (roxygen2::block_get_tag_value (block, "backref"))
+        block_backref <- roxygen2::block_get_tag_value (block, "backref")
         block_line <- block$line
-        msg <- paste0 ("Standards [", standards, "] in function '",
-                       func_name, "()' on line#",
-                       block_line, " of file [",
-                       block_backref, "]")
-        msgs <- c (msgs, msg)
+
+        msgs <- c (msgs, paste0 ("Standards [", standards,
+                                 "] in function '", func_name,
+                                 "()' on line#", block_line,
+                                 " of file [", basename (block_backref), "]"))
     }
 
     if (length (msgs) > 0L) {
