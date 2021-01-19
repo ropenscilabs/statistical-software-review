@@ -213,4 +213,52 @@ A full example might look something like this:
 
 These `@rssr` tags do not appear in any resultant documentation, rather they
 only serve to enable identification of which components of a package address
-which standards.
+which standards. Each [`roxygen2`
+"block"](https://roxygen2.r-lib.org/articles/rd.html#the-description-block) may
+only contain a single `@rssr` tag, with multiple standards separated by commas.
+The following example illustrates that multiple consecutive standards may be
+separated by hyphens, and line breaks may also be used.
+
+```{r rssr-tags-example, eval = FALSE}
+#' @name this_fn
+#' This is a function.
+#' @rssr
+#' G1.0,
+#' RE2.0-RE2.4,
+#' RE5.0
+this_fn <- function() {}
+```
+Each standard or set of standards except the last should be separated by a
+comma. The roclet ensures that this format is followed by triggering errors if
+the lists of standards are not able to be parsed.
+
+### 2.1 Non-applicable Standards
+
+As described in the [main
+documentation](https://ropenscilabs.github.io/statistical-software-review-book/index.html),
+not all standards may be applicable to any given package. Standards which are
+deemed by developers not to be applicable should nevertheless be documented
+according to the procedure described in this section, and using a dedicated
+`@rssrNA` tag. Each non-applicable standard should be named, and a brief
+justification provided as to why that standard may not be applicable. These
+should all exist within a single [`roxygen2`](https://roxygen2.r-lib.org) block
+like the following:
+
+```{r NA}
+#' @title NA_standards
+#' @rssrnA G1.0
+#' @note G1.0 is not applicable because there the reference has not yet been published
+#' @noRd
+```
+
+A sensible location for this [`roxygen2`](https://roxygen2.r-lib.org) block
+might be in the main package file, `R/<pkg>-package.R`, although developers may
+prefer a separate document such as `R/MA_standards.R`, especially if the list
+is quite long. This block must be formatted as follows:
+
+1. It must begin with the line `@title NA_standards` (note `@title` and not `@name`).
+2. It must include a `@noRd` tag to prevent the block being added to package
+   documentation.
+3. The standards must be listed after a single `@rssr` tag, as described above.
+4. Finally, the justification for why each listed standard, or consecutive set
+   of hyphen-separated standards, is not applicable should be provided in a distinct `@note`
