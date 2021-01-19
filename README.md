@@ -6,8 +6,7 @@ status](https://github.com/ropenscilabs/statistical-software-review/workflows/R-
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-Statistical Software Review
-===========================
+# Statistical Software Review
 
 This repository is primarily intended for submissions to rOpenSci’s
 expanded system of software peer review to encompass statistical
@@ -16,14 +15,12 @@ procedures which will be used to guide the process, are in the
 [statistical-software-review-book
 repository](https://github.com/ropenscilabs/statistical-software-review-book).
 
-But it appears to be an R package?
-----------------------------------
+## But it appears to be an R package?
 
-Ah, that’s true. The repository also contains a few functions intended
-to aid the review process, bundled within an R package called
-`statsoftrev`. The functions themselves are prefixed with `rssr_` for
-**r**OpenSci **s**tatistical **s**oftware **r**eview. The package can be
-installed with,
+Ah, that’s true. The repository also contains a few functions both for
+the use of developers submitting packages for review, and for reviewers.
+This repository also contains an R package called `statsoftrev` which
+developers and reviewers will need to install with,
 
 ``` r
 # install.packages("remotes")
@@ -36,18 +33,11 @@ It can then be loaded for use with,
 library (statsoftrev)
 ```
 
-At present the package contains the following functions:
-
-``` r
-ls ("package:statsoftrev")
-```
-
-    ## [1] "rssr_available_categories" "rssr_checklist_check"     
-    ## [3] "rssr_standards_checklist"
-
-The first of these functions provides a list of currently developed
-categories of statistical software for which standards have been
-developed.
+All functions of the packages are prefixed with `rssr_`, for
+“**r**OpenSci **S**tatistical **S**oftware **R**eview.” One function
+provides a list of currently developed categories of statistical
+software for which standards have been developed, along with links to
+the online standards for each category:
 
 ``` r
 rssr_available_categories ()
@@ -59,35 +49,51 @@ rssr_available_categories ()
     ## 3      general                                                             EDA
     ## 4           ml                                                Machine Learning
     ## 5   regression                              Regression and Supervised Learning
-    ## 6  time-series                                                     Time Series
-    ## 7 unsupervised Dimensionality Reduction, Clustering, and Unsupervised Learning
+    ## 6      spatial                                                         Spatial
+    ## 7  time-series                                                     Time Series
+    ## 8 unsupervised Dimensionality Reduction, Clustering, and Unsupervised Learning
     ##                                                                                                                                            url
     ## 1                    https://ropenscilabs.github.io/statistical-software-review-book/standards.html#general-standards-for-statistical-software
     ## 2                             https://ropenscilabs.github.io/statistical-software-review-book/standards.html#bayesian-and-monte-carlo-software
     ## 3                                     https://ropenscilabs.github.io/statistical-software-review-book/standards.html#exploratory-data-analysis
     ## 4                                     https://ropenscilabs.github.io/statistical-software-review-book/standards.html#machine-learning-software
     ## 5                            https://ropenscilabs.github.io/statistical-software-review-book/standards.html#regression-and-supervised-learning
-    ## 6                                          https://ropenscilabs.github.io/statistical-software-review-book/standards.html#time-series-software
-    ## 7 https://ropenscilabs.github.io/statistical-software-review-book/standards.html#dimensionality-reduction-clustering-and-unsupervised-learning
+    ## 6                                              https://ropenscilabs.github.io/statistical-software-review-book/standards.html#spatial-software
+    ## 7                                          https://ropenscilabs.github.io/statistical-software-review-book/standards.html#time-series-software
+    ## 8 https://ropenscilabs.github.io/statistical-software-review-book/standards.html#dimensionality-reduction-clustering-and-unsupervised-learning
 
-The remaining two functions are to aid package reviewers, as now
-described.
+Any software within one or more of these categories may be considered
+for review. The remaining functions are intended for submitting authors,
+reviewers, and rOpenSci editors, and serve the two primary tasks of:
 
-So I’m reviewing a package, what should I do?
----------------------------------------------
+1.  Obtaining and processing checklists of standards; and
+2.  Enabling and processing [`roxygen2`](https://roxygen2.r-lib.org)
+    tags to align package functions with standards.
 
-Hopefully we’ve made that pretty easy with these steps.
+These functions will be needed, for different purposes, by both
+developers and reviewers. The book on [Statistical Software
+Review](https://ropenscilabs.github.io/statistical-software-review-book/index.html)
+details the procedures to be followed by both developers and reviewers
+to align and asses software against the standards. This package enables
+copies of those standards to be obtained as markdown-formatted
+checklists, as described in the first of the following sections.
+Developers are also expected to align the various functions of their
+software with specific standards using project-specific
+[`roxygen2`](https://roxygen2.r-lib.org) tags, as described in the
+subsequent section.
 
-### 1. Obtain relevant checklists of standards
+## 1. Checklists of standards
 
-You first need to obtain checklists of general and category-specific
-standards relevant to the package. The function
+Both developers and reviewers will need to obtain checklists of general
+and category-specific standards relevant to the package, with detailed
+procedures given in the main [project
+book](https://ropenscilabs.github.io/statistical-software-review-book/index.html).
+The function
 [`rssr_standards_checklist()`](https://ropenscilabs.github.io/statistical-software-review/reference/rssr_standards_checklist.html)
 converts one or more of the currently written standards into a
-rmarkdown-formatted checklist for the benefit of reviewers. These
-checklists are also copied directly to a local clipboard, ready to be
-pasted directly into a local file or a github issue. This function
-always extracts the checklist of [General
+rmarkdown-formatted checklist. These checklists are also copied directly
+to a local clipboard, ready to be pasted directly into a local file or a
+github issue. This function always extracts the checklist of [General
 Standards](https://ropenscilabs.github.io/statistical-software-review-book/standards.html#general-standards-for-statistical-software),
 along with any specified categories appended as additional checklists.
 
@@ -125,7 +131,7 @@ which you can paste anywhere. The function also has a `filename`
 argument which can be used to save the checklist directly to a local
 file.
 
-### 2. Fill out checklists
+### 1.1 Fillling out checklists
 
 While it is possible to paste a checklist directly into a github issue
 and complete it there, we recommend that you first save the checklist to
@@ -139,7 +145,7 @@ standard with a comment explaining how the software does or does not
 fulfil that standard. Please do not remove or change the identifiers for
 each standard.
 
-#### Inapplicable Standards
+### 1.2 Inapplicable Standards
 
 Any standards deemed inapplicable to a given software package should be
 checked, the text potentially modified to indicate how or why those
@@ -164,7 +170,7 @@ be considered applicable. In such cases, please simply leave these
 standards unchecked, and alter the relevant text to clarify why you
 think those standards should apply.
 
-### 3. Check the formatting of your checklist
+### 1.3 Check the formatting of your checklist
 
 Having completed your checklist, please use one final function,
 [`rssr_checklist_check()`](https://ropenscilabs.github.io/statistical-software-review/reference/rssr_checklist_check.html),
@@ -175,3 +181,69 @@ standardised formats. Simply pass the name of the local file containing
 your checklist to this function, and the file will be updated with any
 necessary changes, as well as copied again to your local clipboard ready
 to be pasted into the github review issue.
+
+## 2. `roxygen2` tags
+
+The `statsoftrev` package associated with this repository includes
+functions to process project-specific
+[`roxygen2`](https://roxygen2.r-lib.org) tags of `#' @rssr`, to align
+package functions with specific standards. Packages can enable these
+tags by adding or modifying the `Roxygen` line of a package’s
+`DESCRIPTION` file to include the `statsoftrev::rssr_roclet`. The result
+might look something like the following:
+
+    Roxygen: list(markdown = TRUE, roclets = c("namespace", "rd", "statsoftref::rssr_roclet"))
+
+You do not need to import or in any way depend on the `statsoftrev`
+package, but merely add the “roclet” as in the above line. For
+developers, this will have the sole effect of enabling
+[`roxygen2`](https://roxygen2.r-lib.org) to ignore all `@rssr` tags in
+your documentation, and to proceed to generate documentation as normal.
+(Documentation will still be generated even without adding the “roclet”
+to your `DESCRIPTION` file, but you’ll see warnings about “@rssr unknown
+tag”.)
+
+Developers are required to align the functions of their software with
+specific standards which those functions address by inserting `@rssr`
+tags in their function documentation, Each standard should be tagged at
+least once within a package by a `#' @rssr <standard-number>` tag, where
+`<standard number>` refers to one or more of the general or
+category-specific standards.
+
+For example, the first standard illustrated above is,
+
+    ## [1] "- [ ] **G1.0** *Statistical Software should list at least one primary reference from published academic literature.* "
+
+Such primary references are commonly provided in the `DESCRIPTION` file,
+but should also be documented within the code itself. One common place
+for references is in the primary package documentation, typically within
+a file named, `R/<mypkg>-package.R`, documented as described in the
+[`roxygen2`
+documentation](https://roxygen2.r-lib.org/articles/rd.html#packages-1).
+Packages initially generated with [`usethis`](https://usethis.r-lib.org)
+with automatically have this package-level documentation. Primary
+references may then be inserted anywhere within this package-level
+documentation, typically with a [`\doi{}`
+tag](https://cran.r-project.org/doc/manuals/R-exts.html#User_002ddefined-macros).
+The documentation of that primary reference can be aligned to [Standard
+**G1.0**](https://ropenscilabs.github.io/statistical-software-review-book/standards.html#documentation)
+by adding the following [`roxygen2`](https://roxygen2.r-lib.org) tag:
+
+``` r
+#' @rssr G1.0
+```
+
+A full example might look something like this:
+
+``` r
+#' @details
+#' This package is an implementation of the algorithm described in
+#' \doi{<reference-to-published-algorithm>}.
+#' @keywords internal
+#' @rssr G1.0
+"_PACKAGE"
+```
+
+These `@rssr` tags do not appear in any resultant documentation, rather
+they only serve to enable identification of which components of a
+package address which standards.
