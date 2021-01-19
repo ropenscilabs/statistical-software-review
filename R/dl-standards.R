@@ -112,6 +112,9 @@ category_titles_urls <- function (category) {
                                      "and Unsupervised Learning"),
                      url = paste0 (u_base, "dimensionality-reduction-",
                                    "clustering-and-unsupervised-learning"))
+    else if (category == "spatial")
+        ret <- list (title = "Spatial",
+                     url = paste0 (u_base, "spatial-software"))
 
     return (ret)
 }
