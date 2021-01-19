@@ -9,3 +9,7 @@ rssr_roclet()
 \description{
 Get values of all \code{rssr} tags in function documentation
 }
+\details{
+Note that this function should never need to be called directly. It only
+exists to enable "@rssr" tags to be parsed from \pkg{roxygen2} documentation.
+}

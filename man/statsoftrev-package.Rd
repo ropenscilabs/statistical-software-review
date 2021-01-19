@@ -6,8 +6,8 @@
 \alias{statsoftrev-package}
 \title{statsoftrev: 'rOpenSci' Statistical Software Review}
 \description{
-Companion package to 'rOpenSci' statistical software review
-    project.
+Companion package to 'rOpenSci' statistical
+    software review project.
 }
 \author{
 \strong{Maintainer}: Mark Padgham \email{mark@ropensci.org} (\href{https://orcid.org/0000-0003-2172-5265}{ORCID})
