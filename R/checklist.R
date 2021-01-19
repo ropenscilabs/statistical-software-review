@@ -20,7 +20,8 @@ rssr_checklist_check <- function (file) {
     x <- fix_nas (x, sym = "_")
 
     if (!identical (x0, x)) {
-        cli::cli_alert ("file contained incorrect formatting and has been modified")
+        cli::cli_alert (paste0 ("file contained incorrect ",
+                                "formatting and has been modified"))
         writeLines (x, file)
     } else {
         cli::cli_alert_success ("No formatting issues found in file")

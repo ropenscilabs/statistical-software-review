@@ -13,7 +13,7 @@ base_url <- function (raw = FALSE) {
 }
 
 #' @return List of all current categories as obtained from directory contents of
-#' https://github.com/ropenscilabs/statistical-software-review-book/tree/master/standards
+#' https://github.com/ropenscilabs/statistical-software-review-book/tree/master/standards # nolint
 #' @noRd
 list_categories <- function () {
     u <- paste0 (base_url (), "git/trees/master?recursive=1")
@@ -75,7 +75,7 @@ format_standards <- function (s) {
     s <- gsub ("\\s*\\-\\s+\\*\\*", "- \\[ \\] **", s)
 
     # indent sub-standards
-    index <- grep ("\\-\\s?\\[\\s\\]\\s\\*\\*[A-Z]+[0-9]\\.[0-9]+[a-z]\\*\\*", s)
+    index <- grep ("\\-\\s?\\[\\s\\]\\s\\*\\*[A-Z]+[0-9]\\.[0-9]+[a-z]\\*\\*", s) # nolint
     s [index] <- paste0 ("    ", s [index])
 
     s <- add_space_around_sections (s)
@@ -88,7 +88,7 @@ format_standards <- function (s) {
 
 category_titles_urls <- function (category) {
     ret <- list ()
-    u_base = paste0 ("https://ropenscilabs.github.io/",
+    u_base <- paste0 ("https://ropenscilabs.github.io/",
                      "statistical-software-review-book/",
                      "standards.html#")
 
@@ -103,7 +103,8 @@ category_titles_urls <- function (category) {
                      url = paste0 (u_base, "machine-learning-software"))
     else if (category == "regression")
         ret <- list (title = "Regression and Supervised Learning",
-                     url = paste0 (u_base, "regression-and-supervised-learning"))
+                     url = paste0 (u_base,
+                                   "regression-and-supervised-learning"))
     else if (category == "time-series")
         ret <- list (title = "Time Series",
                      url = paste0 (u_base, "time-series-software"))
@@ -219,7 +220,7 @@ add_space_around_sections <- function (s) {
     # only
     index1 <- which (snew == "")
     index2 <- which (diff (index1) == 1)
-    snew <- snew [-(index1 [index2])]
+    snew <- snew [- (index1 [index2])]
 
     return (snew)
 }
