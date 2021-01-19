@@ -98,7 +98,6 @@ process_rssr_tags <- function (block) {
     }
     standards <- unlist (strsplit (standards, ","))
 
-    notes <- roxygen2::block_get_tag_value (block, "note")
     block_backref <- roxygen2::block_get_tag_value (block, "backref")
     block_line <- block$line
 
@@ -110,7 +109,7 @@ process_rssr_tags <- function (block) {
     return (msg)
 }
 
-process_rssrNA_tags <- function (block) {
+process_rssrNA_tags <- function (block) { # nolint
 
     block_title <- roxygen2::block_get_tag_value (block, "title")
     if (!block_title == "NA_standards")
