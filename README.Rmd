@@ -156,6 +156,11 @@ look something like the following:
 Roxygen: list(markdown = TRUE, roclets = c("namespace", "rd", "statsoftref::rssr_roclet"))
 ```
 
+The `"namespace"` and `"rd"` roclets are the [default
+roclets](https://roxygen2.r-lib.org/reference/roxygenize.html) used by
+[`roxygen2`](https://roxygen2.r-lib.org), and should generally be retained.
+(See also this note on [generating documentation with custom roclets in
+RStudio](https://github.com/mikldk/roxytest#document-package-keyboard-shortcut).)
 You do not need to import or in any way depend on the `statsoftrev` package,
 but merely add the "roclet" as in the above line. For developers, this will
 have the sole effect of enabling [`roxygen2`](https://roxygen2.r-lib.org) to
