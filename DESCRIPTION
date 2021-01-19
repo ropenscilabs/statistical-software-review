@@ -1,14 +1,14 @@
 Package: statsoftrev
 Title: 'rOpenSci' Statistical Software Review
-Version: 0.0.0.1
+Version: 0.0.0.002
 Authors@R: 
     person(given = "Mark",
            family = "Padgham",
            role = c("aut", "cre"),
            email = "mark@ropensci.org",
            comment = c(ORCID = "0000-0003-2172-5265"))
-Description: Companion package to 'rOpenSci' statistical software review
-    project.
+Description: Companion package to 'rOpenSci' statistical
+    software review project.
 License: MIT + file LICENSE
 Imports:
     cli,
