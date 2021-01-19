@@ -289,7 +289,7 @@ not be applicable. These should all exist within a single
 
 ``` r
 #' @title NA_standards
-#' @rssrnA G1.0
+#' @rssrNA G1.0
 #' @note G1.0 is not applicable because there the reference has not yet been published
 #' @noRd
 ```
