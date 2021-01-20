@@ -135,6 +135,21 @@ category_titles_urls <- function (category) {
 #'
 #' @export
 rssr_standards_checklist <- function (category = NULL, filename = NULL) {
+
+    s <- get_standards_checklists (category = category)
+
+    cli::cli_alert_info ("Markdown-formatted checklist copied to clipboard")
+
+    if (!is.null (filename)) {
+        filename <- paste0 (tools::file_path_sans_ext (filename), ".md")
+        writeLines (text = s, con = filename)
+    }
+
+    invisible (clipr::write_clip (s))
+}
+
+get_standards_checklists <- function (category = NULL) {
+
     s <- dl_standards (category = "general")
     s <- format_standards (s)
     u <- paste0 ("https://ropenscilabs.github.io/",
@@ -162,14 +177,7 @@ rssr_standards_checklist <- function (category = NULL, filename = NULL) {
         }
     }
 
-    cli::cli_alert_info ("Markdown-formatted checklist copied to clipboard")
-
-    if (!is.null (filename)) {
-        filename <- paste0 (tools::file_path_sans_ext (filename), ".md")
-        writeLines (text = s, con = filename)
-    }
-
-    invisible (clipr::write_clip (s))
+    return (s)
 }
 
 #' rssr_available_categories
