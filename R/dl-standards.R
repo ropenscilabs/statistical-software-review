@@ -186,6 +186,8 @@ rssr_standards_roxygen <- function (category = NULL,
 
     x <- c ("#' rssr_standards",
             "#'",
+            "#' @rssrVerboseDoc TRUE",
+            "#'",
             paste0 ("#' @rssrTODO ", s),
             "#' @noRd",
             "NULL")
