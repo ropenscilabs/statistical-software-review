@@ -122,8 +122,9 @@ category_titles_urls <- function (category) {
 
 #' rssr_standards_checklist
 #'
-#' Obtain a set of one or more category-specific standards as a checklist, and
-#' store the result in the local clipboard ready to paste.
+#' Obtain rOpenSci standards for statistical software, along with one or more
+#' category-specific standards, as a checklist, and store the result in the
+#' local clipboard ready to paste.
 #'
 #' @param category One of the names of files given in the directory contents of
 #' \url{https://github.com/ropenscilabs/statistical-software-review-book/tree/master/standards},

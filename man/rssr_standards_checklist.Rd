@@ -19,6 +19,7 @@ A character vector containing a markdown-style checklist of general
 standards along with standards for any additional categories.
 }
 \description{
-Obtain a set of one or more category-specific standards as a checklist, and
-store the result in the local clipboard ready to paste.
+Obtain rOpenSci standards for statistical software, along with one or more
+category-specific standards, as a checklist, and store the result in the
+local clipboard ready to paste.
 }

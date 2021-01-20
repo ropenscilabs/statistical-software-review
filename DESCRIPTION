@@ -1,6 +1,6 @@
 Package: statsoftrev
 Title: 'rOpenSci' Statistical Software Review
-Version: 0.0.0.016
+Version: 0.0.0.017
 Authors@R: 
     person(given = "Mark",
            family = "Padgham",
