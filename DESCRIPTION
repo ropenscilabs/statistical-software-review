@@ -1,6 +1,6 @@
 Package: statsoftrev
 Title: 'rOpenSci' Statistical Software Review
-Version: 0.0.0.018
+Version: 0.0.0.019
 Authors@R: 
     person(given = "Mark",
            family = "Padgham",
@@ -13,6 +13,7 @@ License: MIT + file LICENSE
 Imports:
     cli,
     clipr,
+    here,
     httr,
     roxygen2
 Encoding: UTF-8

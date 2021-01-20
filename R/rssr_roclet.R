@@ -38,6 +38,26 @@ roxy_tag_rd.roxy_tag_rssrNA <- function(x, base_path, env) { # nolint
   NULL
 }
 
+#' Parse rssrTODO tags
+#'
+#' @param x Input
+#' @return Parsed tags
+#'
+#' @importFrom roxygen2 roxy_tag_parse
+#' @noRd
+#' @export
+roxy_tag_parse.roxy_tag_rssrTODO <- function(x) { # nolint
+    roxygen2::tag_markdown (x)
+}
+
+#' @importFrom roxygen2 roxy_tag_rd
+#' @noRd
+#' @export
+roxy_tag_rd.roxy_tag_rssrTODO <- function(x, base_path, env) { # nolint
+  NULL
+}
+
+
 #' rssr_roclet
 #'
 #' Get values of all `rssr` tags in function documentation
@@ -57,26 +77,36 @@ rssr_roclet <- function () {
 #' @export
 roclet_process.roclet_rssr <- function (x, blocks, env, base_path) { # nolint
 
-    msgs <- list ()
+    msgs <- msgsNA <- msgsTODO <- list () # nolint
 
     for (block in blocks) {
 
-        msg <- NULL
-
         if (length (roxygen2::block_get_tags (block, "rssr")) > 0L) {
-            msg <- process_rssr_tags (block)
-        } else if (length (roxygen2::block_get_tags (block, "rssrNA")) > 0L) {
-            msg <- process_rssrNA_tags (block)
-        } else {
-            next
+            msgs <- c (msgs, process_rssr_tags (block))
+        }
+        if (length (roxygen2::block_get_tags (block, "rssrNA")) > 0L) {
+            msgsNA <- c (msgsNA, process_rssrNA_tags (block)) # nolint
+        }
+        if (length (roxygen2::block_get_tags (block, "rssrTODO")) > 0L) {
+            msgsTODO <- process_rssrTODO_tags (block)
         }
 
-        msgs <- c (msgs, msg)
     }
 
-    if (length (msgs) > 0L) {
+    if (length (msgs) > 0L | length (msgsNA) > 0L | length (msgsTODO))
         message ("rOpenSci Statistical Software Standards:")
+
+    if (length (msgs) > 0L) {
+        message ("")
         message (paste0 ("  * ", msgs, collapse = "\n"), sep = "")
+    }
+    if (length (msgsNA) > 0L) {
+        message ("")
+        message (paste0 ("  * ", msgsNA, collapse = "\n"), sep = "")
+    }
+    if (length (msgsTODO) > 0L) {
+        message ("")
+        message (paste0 ("  * ", msgsTODO, collapse = "\n"), sep = "")
     }
 
     return (NULL)
@@ -124,6 +154,27 @@ process_rssrNA_tags <- function (block) { # nolint
     block_line <- block$line
 
     msg <- paste0 ("NA Standards [", paste0 (standards, collapse = ", "),
+                   "] on line#", block_line,
+                   " of file [", basename (block_backref), "]")
+
+    return (msg)
+}
+
+process_rssrTODO_tags <- function (block) { # nolint
+
+    block_title <- roxygen2::block_get_tag_value (block, "title")
+    if (!block_title == "rssr_standards")
+        stop ("@rssrTODO and @rssrNA tags should only appear ",
+              "in a block with a title of rssr_standards")
+
+    standards <- roxygen2::block_get_tags (block, "rssrTODO")
+    standards <- unlist (lapply (standards, function (i) i$val))
+    standards <- gsub ("\\s.*$", "", standards)
+
+    block_backref <- roxygen2::block_get_tag_value (block, "backref")
+    block_line <- block$line
+
+    msg <- paste0 ("TODO Standards [", paste0 (standards, collapse = ", "),
                    "] on line#", block_line,
                    " of file [", basename (block_backref), "]")
 
