@@ -149,6 +149,54 @@ rssr_standards_checklist <- function (category = NULL, filename = NULL) {
     invisible (clipr::write_clip (s))
 }
 
+#' rssr_standards_roxygen
+#'
+#' Obtain rOpenSci standards for statistical software, along with one or more
+#' category-specific standards, as a checklist, convert to project-specific
+#' \pkg{roxygen2} format, and save in nominated file.
+#'
+#' @inheritParams rssr_standards_checklist
+#' @return Nothing
+#' @export
+rssr_standards_roxygen <- function (category = NULL,
+                                    filename = "rssr_standards.R") {
+
+    if (!"DESCRIPTION" %in% list.files (here::here ()))
+        stop ("This function must be called within an R package directory")
+    fname <- basename (filename)
+    if (!fname == filename)
+        message ("Path information has been removed from filename")
+
+    fname <- file.path (here::here (), "R", fname)
+
+    if (file.exists (fname)) {
+        x <- readline ("Overwrite current file (y/n)? ")
+        if (tolower (substring (x, 1, 1) != "y"))
+            stop ("Okay, we'll stop there")
+        message (x)
+        stop ()
+    }
+
+    s <- get_standards_checklists (category = category)
+
+    # remove all blank lines, section titles, and separators
+    s <- s [-which (s == "" | grepl ("^\\#|^\\-+$", s))]
+    # replace initial checklist characters
+    s <- gsub ("^\\s?\\-\\s+\\[\\s\\]\\s+", "", s)
+    # remove bold/italic formatting characters
+    s <- gsub ("\\*", "", s)
+
+    x <- c ("#' rssr_standards",
+            "#'",
+            paste0 ("#' @rssrTODO ", s),
+            "#' @noRd",
+            "NULL")
+
+    writeLines (x, con = fname)
+    cli::cli_alert_info (paste0 ("Roxygen2-formatted stanards written to [",
+                                 basename (fname), "]"))
+}
+
 get_standards_checklists <- function (category = NULL) {
 
     s <- dl_standards (category = "general")
