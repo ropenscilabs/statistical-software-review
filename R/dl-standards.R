@@ -35,7 +35,7 @@ dl_standards <- function (category = "general") {
     u <- paste0 (base_url (raw = TRUE),
                  "master/standards/", category, ".Rmd")
     tmp <- tempfile (fileext = ".Rmd")
-    ret <- utils::download.file (u, destfile = tmp, quiet = TRUE)
+    ret <- utils::download.file (u, destfile = tmp, quiet = TRUE) # nolint
     cli::cli_alert_success ("Downloaded {category} standards")
 
     readLines (tmp)
@@ -120,8 +120,11 @@ category_titles_urls <- function (category) {
     return (ret)
 }
 
+#' rssr_standards_checklist
+#'
 #' Obtain a set of one or more category-specific standards as a checklist, and
 #' store the result in the local clipboard ready to paste.
+#'
 #' @param category One of the names of files given in the directory contents of
 #' \url{https://github.com/ropenscilabs/statistical-software-review-book/tree/master/standards},
 #' each of which is ultimately formatted into a sub-section of the standards.
@@ -129,6 +132,7 @@ category_titles_urls <- function (category) {
 #' checklist. A suffix of `.md` will be automatically appended.
 #' @return A character vector containing a markdown-style checklist of general
 #' standards along with standards for any additional categories.
+#'
 #' @export
 rssr_standards_checklist <- function (category = NULL, filename = NULL) {
     s <- dl_standards (category = "general")
@@ -168,11 +172,15 @@ rssr_standards_checklist <- function (category = NULL, filename = NULL) {
     invisible (clipr::write_clip (s))
 }
 
+#' rssr_available_categories
+#'
 #' List all currently available categories and associated URLs to full category
 #' descriptions.
+#'
 #' @return A `data.frame` with 3 columns of "category" (the categories to be
 #' submitted to \link{rssr_standards_checklist}), "title" (the full title), and
 #' "url".
+#'
 #' @export
 rssr_available_categories <- function () {
     cats <- list_categories ()

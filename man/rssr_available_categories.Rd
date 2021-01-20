@@ -2,8 +2,7 @@
 % Please edit documentation in R/dl-standards.R
 \name{rssr_available_categories}
 \alias{rssr_available_categories}
-\title{List all currently available categories and associated URLs to full category
-descriptions.}
+\title{rssr_available_categories}
 \usage{
 rssr_available_categories()
 }

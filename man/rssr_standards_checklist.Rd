@@ -2,8 +2,7 @@
 % Please edit documentation in R/dl-standards.R
 \name{rssr_standards_checklist}
 \alias{rssr_standards_checklist}
-\title{Obtain a set of one or more category-specific standards as a checklist, and
-store the result in the local clipboard ready to paste.}
+\title{rssr_standards_checklist}
 \usage{
 rssr_standards_checklist(category = NULL, filename = NULL)
 }

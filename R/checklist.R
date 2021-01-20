@@ -1,4 +1,6 @@
 
+#' rssr_checklist_check
+#'
 #' Correct any potential formatting issues in a completed standards checklist
 #'
 #' @param file Name of local file containing a completed checklist. Must be a

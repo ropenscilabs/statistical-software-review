@@ -2,7 +2,7 @@
 % Please edit documentation in R/checklist.R
 \name{rssr_checklist_check}
 \alias{rssr_checklist_check}
-\title{Correct any potential formatting issues in a completed standards checklist}
+\title{rssr_checklist_check}
 \usage{
 rssr_checklist_check(file)
 }
