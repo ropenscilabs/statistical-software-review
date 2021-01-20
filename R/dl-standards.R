@@ -173,8 +173,6 @@ rssr_standards_roxygen <- function (category = NULL,
         x <- readline ("Overwrite current file (y/n)? ")
         if (tolower (substring (x, 1, 1) != "y"))
             stop ("Okay, we'll stop there")
-        message (x)
-        stop ()
     }
 
     s <- get_standards_checklists (category = category)
