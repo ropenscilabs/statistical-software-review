@@ -17,9 +17,9 @@ repository](https://github.com/ropenscilabs/statistical-software-review-book).
 
 ## But it appears to be an R package?
 
-Ah, that’s true. The repository also contains a few functions both for
-the use of developers submitting packages for review, and for reviewers.
-This repository also contains an R package called `statsoftrev` which
+Ah, that’s true. The repository also contains a few tools for the use
+both of developers submitting packages for review, and for reviewers.
+These tools are bundled s an R package called `statsoftrev` which
 developers and reviewers will need to install with,
 
 ``` r
@@ -27,13 +27,13 @@ developers and reviewers will need to install with,
 remotes::install_github("ropenscilabs/statistical-software-review")
 ```
 
-It can then be loaded for use with,
+and loaded for use with,
 
 ``` r
 library (statsoftrev)
 ```
 
-All functions of the packages are prefixed with `rssr_`, for
+All functions of the package are prefixed with `rssr_`, for
 “**r**OpenSci **S**tatistical **S**oftware **R**eview.” One function
 provides a list of currently developed categories of statistical
 software for which standards have been developed, along with links to
@@ -99,15 +99,21 @@ along with any specified categories appended as additional checklists.
 
 ``` r
 x <- rssr_standards_checklist (category = c ("regression", "ml"))
+## ✔ Downloaded general standards
+
+## ✔ Downloaded regression standards
+
+## ✔ Downloaded ml standards
+
+## ℹ Markdown-formatted checklist copied to clipboard
 ```
 
-    ## ✔ Downloaded general standards
-
-    ## ✔ Downloaded regression standards
-
-    ## ✔ Downloaded ml standards
-
-    ## ℹ Markdown-formatted checklist copied to clipboard
+    ## [1] "## [General Standards](https://ropenscilabs.github.io/statistical-software-review-book/standards.html#general-standards-for-statistical-software)"
+    ## [2] ""                                                                                                                                                 
+    ## [3] "### Documentation"                                                                                                                                
+    ## [4] ""                                                                                                                                                 
+    ## [5] "- [ ] **G1.0** *Statistical Software should list at least one primary reference from published academic literature.* "                            
+    ## [6] ""
 
 The resultant object is a character vector which starts like this:
 
