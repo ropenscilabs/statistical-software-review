@@ -19,8 +19,9 @@ repository](https://github.com/ropenscilabs/statistical-software-review-book).
 
 Ah, that’s true. The repository also contains a few tools for the use
 both of developers submitting packages for review, and for reviewers.
-These tools are bundled s an R package called `statsoftrev` which
-developers and reviewers will need to install with,
+These tools are bundled s an R package called `rssr` (for “**r**OpenSci
+**S**tatistical **S**oftware **R**eview”) which developers and reviewers
+will need to install with,
 
 ``` r
 # install.packages("remotes")
@@ -30,11 +31,10 @@ remotes::install_github("ropenscilabs/statistical-software-review")
 and loaded for use with,
 
 ``` r
-library (statsoftrev)
+library (rssr)
 ```
 
-All functions of the package are prefixed with `rssr_`, for
-“**r**OpenSci **S**tatistical **S**oftware **R**eview.” One function
+All functions of the package are prefixed with `rssr_`. One function
 provides a list of currently developed categories of statistical
 software for which standards have been developed, along with links to
 the online standards for each category:
@@ -190,13 +190,12 @@ to be pasted into the github review issue.
 
 ## 2. `roxygen2` tags
 
-The `statsoftrev` package associated with this repository includes
-functions to process project-specific
-[`roxygen2`](https://roxygen2.r-lib.org) tags of `#' @rssr`, to align
-package functions with specific standards. Packages can enable these
-tags by adding or modifying the `Roxygen` line of a package’s
-`DESCRIPTION` file to include the `statsoftrev::rssr_roclet`. The result
-might look something like the following:
+The `rssr` package associated with this repository includes functions to
+process project-specific [`roxygen2`](https://roxygen2.r-lib.org) tags
+of `#' @rssr`, to align package functions with specific standards.
+Packages can enable these tags by adding or modifying the `Roxygen` line
+of a package’s `DESCRIPTION` file to include the `rssr::rssr_roclet`.
+The result might look something like the following:
 
     Roxygen: list(markdown = TRUE, roclets = c("namespace", "rd", "statsoftref::rssr_roclet"))
 
@@ -210,13 +209,13 @@ and see
 [`roxygen::update_collate()`](https://roxygen2.r-lib.org/reference/update_collate.html)
 to determine whether you might also need to add `"collate"` to your
 `DESCRIPTION`’s `Roxygen` list.) You do not need to import or in any way
-depend on the `statsoftrev` package, but merely add the “roclet” as in
-the above line. For developers, this will have the sole effect of
-enabling [`roxygen2`](https://roxygen2.r-lib.org) to ignore all `@rssr`
-tags in your documentation, and to proceed to generate documentation as
-normal. (Documentation will still be generated even without adding the
-“roclet” to your `DESCRIPTION` file, but you’ll see warnings about
-“@rssr unknown tag”.)
+depend on the `rssr` package, but merely add the “roclet” as in the
+above line. For developers, this will have the sole effect of enabling
+[`roxygen2`](https://roxygen2.r-lib.org) to ignore all `@rssr` tags in
+your documentation, and to proceed to generate documentation as normal.
+(Documentation will still be generated even without adding the “roclet”
+to your `DESCRIPTION` file, but you’ll see warnings about “@rssr unknown
+tag”.)
 
 Developers are required to align the functions of their software with
 specific standards which those functions address by inserting `@rssr`
