@@ -148,9 +148,10 @@ where you’ve addressed each of these standards.
     how that standard has been met. Tags for one particular standard may
     be repeated in multiple places within your code, and we encourage
     locating an `@rssr` tag reference to a particular standard at all
-    locations which directly address that standard. Alternatively, any
-    standards which you consider not applicable to your software may
-    remain listed in the main `rssr_standards.R` document, with their
-    tag changed from `@rssrTODO` to `@rssrNA`, and the description of
-    the standard removed and replace by an explanation of why that
-    standard does not apply.
+    locations which directly address that standard.
+
+6.  Alternatively, any standards which you consider not applicable to
+    your software may remain listed in the main `rssr_standards.R`
+    document, with their tag changed from `@rssrTODO` to `@rssrNA`, and
+    the description of the standard removed and replace by an
+    explanation of why that standard does not apply.
