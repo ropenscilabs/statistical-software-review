@@ -156,6 +156,8 @@ rssr_standards_checklist <- function (category = NULL, filename = NULL) {
 #' \pkg{roxygen2} format, and save in nominated file.
 #'
 #' @inheritParams rssr_standards_checklist
+#' @param filename Name of 'R' source file in which to write
+#' \pkg{roxygen2}-formatted lists of standards.
 #' @return Nothing
 #' @export
 rssr_standards_roxygen <- function (category = NULL,

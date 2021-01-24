@@ -11,8 +11,8 @@ rssr_standards_roxygen(category = NULL, filename = "rssr_standards.R")
 \url{https://github.com/ropenscilabs/statistical-software-review-book/tree/master/standards},
 each of which is ultimately formatted into a sub-section of the standards.}
 
-\item{filename}{Optional name of local file to save markdown-formatted
-checklist. A suffix of \code{.md} will be automatically appended.}
+\item{filename}{Name of 'R' source file in which to write
+\pkg{roxygen2}-formatted lists of standards.}
 }
 \value{
 Nothing
