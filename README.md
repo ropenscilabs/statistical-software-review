@@ -153,5 +153,6 @@ where you’ve addressed each of these standards.
 6.  Alternatively, any standards which you consider not applicable to
     your software may remain listed in the main `rssr_standards.R`
     document, with their tag changed from `@rssrTODO` to `@rssrNA`, and
-    the description of the standard removed and replace by an
-    explanation of why that standard does not apply.
+    the description of the standard removed and replaced by an
+    explanation of why you consider that standard not applicable to your
+    software.
