@@ -1,9 +1,7 @@
-<!-- badges: start -->
-[![R build status](https://github.com/ropenscilabs/statistical-software-review/workflows/R-CMD-check/badge.svg)](https://github.com/ropenscilabs/statistical-software-review/actions)
-<!-- badges: end -->
-
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+
+![](icon_lettering_color.png)
 
 # Statistical Software Review
 
