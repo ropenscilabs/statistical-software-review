@@ -15,5 +15,5 @@ That book contains complete lists of all current standards to which
 statistical software should adhere, along with descriptions of the
 processes developers should use to prepare software for submission, and
 which reviewers should use to assess software against the standards. The
-project-specific [`rssr` package](https://github.com/ropenscilabs/rssr)
+project-specific [`srr` package](https://github.com/ropenscilabs/srr)
 provides several functions to aid in these tasks.
