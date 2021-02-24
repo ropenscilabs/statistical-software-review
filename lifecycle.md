@@ -5,7 +5,11 @@ Please complete the following statements by filling in all items in angle
 brackets ("<...>"), or for sub-points, reducing lists of multiple items down to
 the single most applicable item. Note that the markdown characters are escaped
 with initial back-slashes which should also be removed. This initial text, and
-all of the following text within parentheses, may be removed.
+all of the following text within parentheses, may be removed. This file should
+generally be placed either in the root directory of your repository, or in the
+`inst/` folder. You will need to add an appropriate entry to your
+`.Rbuildignore` file to ensure this file is not included within any distributed
+versions of your package.
 
 1. The \<package name\> package has been under development for \<N\> \<months/years\>.
 
