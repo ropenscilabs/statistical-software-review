@@ -1,15 +1,26 @@
 
 # Software Life Cycle Statement
 
+<!--- start delete-after-reading section --->
+
+*Please delete this entire paragraph once you have read and understood it.*
 Please complete the following statements by filling in all items in angle
 brackets ("<...>"), or for sub-points, reducing lists of multiple items down to
 the single most applicable item. Note that the markdown characters are escaped
-with initial back-slashes which should also be removed. This initial text, and
-all of the following text within parentheses, may be removed. This file should
-generally be placed either in the root directory of your repository, or in the
-`inst/` folder. You will need to add an appropriate entry to your
-`.Rbuildignore` file to ensure this file is not included within any distributed
-versions of your package.
+with initial back-slashes which should also be removed. Your repository must
+include a copy of this file, also named `lifecycle.md`, generally either in the
+root directory of your repository, or in the `inst/` folder. You will need to
+add an appropriate entry to your `.Rbuildignore` file to ensure this file is
+not included within any distributed versions of your package. This initial
+text, and all of the following text within parentheses, are intended to be
+removed. Please do your best to provide at least vague estimates for the
+quantities requested in the following items: any answer regardless of how vague
+is more informative for everybody involved in the system than no answer. You
+may also provide additional detail in response to any of the following items,
+but please do so by leaving the original phrases intact, and appending
+additional information in subsequent sentences.
+
+<!--- end delete-after-reading section --->
 
 1. The \<package name\> package has been under development for \<N\> \<months/years\>.
 
@@ -42,16 +53,17 @@ versions of your package.
   are \<list factors here\>. This may happen sometime within \<N\> years following
   review. \<Please elaborate if desired.\>
 
-7. We, the developers of \<package name\>, hope to attain a \<green, silver,
+7. We, the developers of \<package name\>, hope to attain a \<standard, silver,
   gold\> badge at the end of review.
 
-(Note that developers who select one of the first two items under the preceding
-point 4 can only attain a green badge; silver or gold require ongoing active
-maintenance described by the third and fourth items of point 4. Note also that
+(Note that silver or gold badges require ongoing active maintenance, for which
+either the third or fourth items of point 4 must be checked. Note also that
 silver should reflect a statement of intent to eventually attain a gold badge,
 for which purpose the following statement is also to be completed.)
 
 8. We aim for a silver badge at the end of review, and then aim to attain a
    gold badge via a subsequent round of review \<N\> \<months/years\> later.
 
+(This last item can be left until negotiation with reviewers during the review
+process.)
 
