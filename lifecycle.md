@@ -27,7 +27,7 @@ additional information in subsequent sentences.
 2. The \<package name\> package has \<N\> primary and \<N\> secondary developers.
 
 3. The primary users of the \<package name\> package are envisioned to be \<list
-  envisioned user community\>, possibly of the order to
+  envisioned user community\>, possibly of the order of
   \<tens/hundreds/thousands\> of users.
 
 4. Following review, the \<package name\> package will
