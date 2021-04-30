@@ -1,6 +1,6 @@
 ---
-name: Submit software for review
-about: Use this template to submit software for review
+name: Submit statistical software for review
+about: Use this template to submit statistical software for review
 
 ---
 
@@ -34,13 +34,18 @@ Version accepted: TBD
 -   Paste your responses to our [*General Standard* **G1.1** here](https://ropenscilabs.github.io/statistical-software-review-book/standards.html#general-standards), describing whether your software is:
 
     - *The first implementation of a novel algorithm*; or
-    - *The first implementation within **R** of an algorithm which has
-      previously been implemented in other languages or contexts*; or
-    - *An improvement on other implementations of similar algorithms in **R***.
+    - *The first implementation within* **R** *of an algorithm which has previously been implemented in other languages or contexts*; or
+    - *An improvement on other implementations of similar algorithms in* **R**.
 
     Please include hyperlinked references to all other relevant software.
 
--   (If applicable) Does your package comply with our [guidance around _Ethics, Data Privacy and Human Subjects Research_](https://devguide.ropensci.org/policies.html#ethics-data-privacy-and-human-subjects-research)?
+-   (If applicable) Does your package comply with our [guidance around *Ethics, Data Privacy and Human Subjects Research*](https://devguide.ropensci.org/policies.html#ethics-data-privacy-and-human-subjects-research)?
+
+## Badging
+
+-    What grade of badge are you aiming for? ([bronze, silver, gold](https://ropenscilabs.github.io/statistical-software-review-book/pkgdev.html#pkgdev-badges))
+
+-    If aiming for silver or gold, describe which of the [four aspects listed in the *Guide for Authors* chapter](https://ropenscilabs.github.io/statistical-software-review-book/pkgdev.html#pkgdev-silver) the package fulfils (at least one aspect for silver; three for gold)
 
 
 ## Technical checks
