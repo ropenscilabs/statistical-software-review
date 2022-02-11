@@ -4,10 +4,14 @@ about: Use this template to submit software for review
 
 ---
 
+<!---
+Below, please enter values for (1) submitting author GitHub handle (replacing "@github_handle@); and (2) Repository URL (replacing "https://repourl"). Values for additional package authors may also be specified, replacing "@github_handle1", "@github_handle2" - delete these if not needed. DO NOT DELETE HTML SYMBOLS (everything between "<!" and ">"). Replace only "@github_handle" and "https://repourl". This comment may be deleted once it has been read and understood.
+--->
 
-Submitting Author: <!--author1-->Name (@github_handle)<!--end-author1-->
-Other Package Authors: (delete if none) <!--author-others-->Name (@github_handle)<!--end-author-others-->
-Repository:  <!--repourl--><!--end-repourl-->
+Submitting Author Name: Name
+Submitting Author Github Handle: <!--author1-->@github_handle<!--end-author1-->
+Other Package Authors Github handles: (comma separated, delete if none) <!--author-others-->@github_handle1, @github_handle2<!--end-author-others-->
+Repository:  <!--repourl-->https://repourl<!--end-repourl-->
 Version submitted:
 Submission type: <!--submission-type-->Standard<!--end-submission-type-->
 Editor: <!--editor--> TBD <!--end-editor-->
@@ -15,7 +19,7 @@ Reviewers: <!--reviewers-list--> TBD <!--end-reviewers-list-->
 <!--due-dates-list--><!--end-due-dates-list-->
 Archive: TBD
 Version accepted: TBD
-
+Language: <!--language-->en<!--end-language-->
 ---
 
 
@@ -55,6 +59,8 @@ Version accepted: TBD
 
 -   If you made a pre-submission inquiry, please paste the link to the corresponding issue, forum post, or other discussion, or @tag the editor you contacted.
 
+-   Explain reasons for any [`pkgcheck` items](https://docs.ropensci.org/pkgcheck/) which your package is unable to pass.
+
 ## Technical checks
 
 Confirm each of the following by checking the box.
@@ -92,4 +98,4 @@ This package:
 
 ## Code of conduct
 
-- [ ] I agree to abide by [rOpenSci's Code of Conduct](https://ropensci.github.io/dev_guide/policies.html#code-of-conduct) during the review process and in maintaining my package should it be accepted.
+- [ ] I agree to abide by [rOpenSci's Code of Conduct](https://ropensci.org/code-of-conduct/) during the review process and in maintaining my package should it be accepted.
