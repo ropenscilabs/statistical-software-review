@@ -1,5 +1,5 @@
 ---
-name: Submit software for review
+name: Submit software for review 
 about: Use this template to submit software for review
 
 ---
@@ -20,6 +20,7 @@ Reviewers: <!--reviewers-list--> TBD <!--end-reviewers-list-->
 Archive: TBD
 Version accepted: TBD
 Language: <!--language-->en<!--end-language-->
+
 ---
 
 
@@ -33,12 +34,13 @@ Language: <!--language-->en<!--end-language-->
 
 ## Scope
 
-- Please indicate which category or categories from our [package fit policies](https://ropensci.github.io/dev_guide/policies.html#package-categories) this package falls under: (Please check an appropriate box below. If you are unsure, we suggest you make a pre-submission inquiry.):
+- Please indicate which category or categories from our [package fit policies](https://devguide.ropensci.org/softwarereview_policies.html#package-categories) this package falls under: (Please check an appropriate box below. If you are unsure, we suggest you make a pre-submission inquiry.):
 
 	- [ ] data retrieval
 	- [ ] data extraction
 	- [ ] data munging
 	- [ ] data deposition
+    - [ ] data validation and testing
 	- [ ] workflow automation
 	- [ ] version control
 	- [ ] citation management and bibliometrics
@@ -46,7 +48,8 @@ Language: <!--language-->en<!--end-language-->
 	- [ ] field and lab reproducibility tools
 	- [ ] database software bindings
 	- [ ] geospatial data
-	- [ ] text analysis
+	- [ ] translation
+    - [ ] rOpenSci internal tools 
 
 - Explain how and why the package falls under these categories (briefly, 1-2 sentences):
 
@@ -57,7 +60,7 @@ Language: <!--language-->en<!--end-language-->
 
 -   (If applicable) Does your package comply with our [guidance around _Ethics, Data Privacy and Human Subjects Research_](https://devguide.ropensci.org/policies.html#ethics-data-privacy-and-human-subjects-research)?
 
--   If you made a pre-submission inquiry, please paste the link to the corresponding issue, forum post, or other discussion, or @tag the editor you contacted.
+-   If you made a pre-submission inquiry, please paste the link to the corresponding issue, forum post, or other discussion, or `@tag` the editor you contacted.
 
 -   Explain reasons for any [`pkgcheck` items](https://docs.ropensci.org/pkgcheck/) which your package is unable to pass.
 
@@ -65,7 +68,8 @@ Language: <!--language-->en<!--end-language-->
 
 Confirm each of the following by checking the box.
 
-- [ ] I have read the [guide for authors](https://devguide.ropensci.org/guide-for-authors.html) and [rOpenSci packaging guide](https://devguide.ropensci.org/building.html).
+- [ ] I have read the [rOpenSci packaging guide](https://devguide.ropensci.org/building.html).
+- [ ] I have read the [author guide](https://devguide.ropensci.org/softwarereview_author.html) and I expect to maintain this package for at least 2 years or to find a replacement.
 
 This package:
 
@@ -75,7 +79,14 @@ This package:
 - [ ] includes [documentation with examples for all functions, created with roxygen2](https://ropensci.github.io/dev_guide/building.html#documentation).
 - [ ] contains a vignette with examples of its essential functions and uses.
 - [ ] has a [test suite](https://ropensci.github.io/dev_guide/building.html#testing).
-- [ ] has [continuous integration](https://ropensci.github.io/dev_guide/ci.html), including reporting of test coverage using services such as Travis CI, Coveralls and/or CodeCov.
+- [ ] has [continuous integration](https://ropensci.github.io/dev_guide/ci.html), including reporting of test coverage.
+
+## Use of Generative AI
+
+- [ ] Generative AI tools were used to produce some of the material in this submission.
+
+If so, please describe usage, and include links to any relevant aspects of your repository. See [our blog post](https://ropensci.org/blog/2026/02/26/ropensci-ai-policy/) for background. (Explicit advice is not yet included in our _Dev Guide_; we are hoping to update very soon, and ask your cooperation and transparency in the meantime.)
+
 
 ## Publication options
 
@@ -89,7 +100,7 @@ This package:
 
 - [ ] The package is novel and will be of interest to the broad readership of the journal.
 - [ ] The manuscript describing the package is no longer than 3000 words.
-- [ ] You intend to archive the code for the package in a long-term repository which meets the requirements of the journal (see [MEE's Policy on Publishing Code](http://besjournals.onlinelibrary.wiley.com/hub/journal/10.1111/(ISSN)2041-210X/journal-resources/policy-on-publishing-code.html))
+- [ ] You intend to archive the code for the package in a long-term repository which meets the requirements of the journal (see [MEE's Policy on Publishing Code](https://besjournals.onlinelibrary.wiley.com/hub/journal/2041210x/policyonpublishingcode.html))
 - (*Scope: Do consider MEE's [Aims and Scope](http://besjournals.onlinelibrary.wiley.com/hub/journal/10.1111/(ISSN)2041-210X/aims-and-scope/read-full-aims-and-scope.html) for your manuscript. We make no guarantee that your manuscript will be within MEE scope.*)
 - (*Although not required, we strongly recommend having a full manuscript prepared when you submit here.*)
 - (*Please do not submit your package separately to Methods in Ecology and Evolution*)

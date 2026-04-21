@@ -4,10 +4,14 @@ about: Use this template to submit statistical software for review
 
 ---
 
+<!---
+Below, please enter values for (1) submitting author GitHub handle (replacing "@github_handle@); and (2) Repository URL (replacing "https://repourl"). Values for additional package authors may also be specified, replacing "@github_handle1", "@github_handle2" - delete these if not needed. DO NOT DELETE HTML SYMBOLS (everything between "<!" and ">"). Replace only "@github_handle" and "https://repourl". This comment may be deleted once it has been read and understood.
+--->
 
-Submitting Author: Name (@github_handle)
-Other Package Authors: (delete if none) Name (@github_handle)
-Repository:  <!--repourl--><!--end-repourl-->
+Submitting Author Name: Name
+Submitting Author Github Handle: <!--author1-->@github_handle<!--end-author1-->
+Other Package Authors Github handles: (comma separated, delete if none) <!--author-others-->@github_handle1, @github_handle2<!--end-author-others-->
+Repository:  <!--repourl-->https://repourl<!--end-repourl-->
 Version submitted:
 Submission type: <!--submission-type-->Stats<!--end-submission-type-->
 Badge grade: <!--statsgrade-->bronze/silver/gold (select one)<!--end-statsgrade-->
@@ -16,7 +20,7 @@ Reviewers: <!--reviewers-list--> TBD <!--end-reviewers-list-->
 <!--due-dates-list--><!--end-due-dates-list-->
 Archive: TBD
 Version accepted: TBD
-
+Language: <!--language-->en<!--end-language-->
 ---
 
 
@@ -26,6 +30,21 @@ Version accepted: TBD
 ```
 
 ```
+
+## Scope 
+
+- Please indicate which of our [statistical package categories](https://stats-devguide.ropensci.org/overview.html#overview-categories) this package falls under. (Please check one or more appropriate boxes below):
+
+     **Statistical Packages**
+
+	- [ ] Bayesian and Monte Carlo Routines
+	- [ ] Dimensionality Reduction, Clustering, and Unsupervised Learning
+	- [ ] Machine Learning
+	- [ ] Regression and Supervised Learning
+	- [ ] Exploratory Data Analysis (EDA) and Summary Statistics
+	- [ ] Spatial Analyses
+	- [ ] Time Series Analyses
+	- [ ] Probability Distributions
 
 ## Pre-submission Inquiry
 
@@ -37,7 +56,7 @@ Version accepted: TBD
 
 -   Who is the target audience and what are scientific applications of this package?
 
--   Paste your responses to our [*General Standard* **G1.1** here](https://ropenscilabs.github.io/statistical-software-review-book/standards.html#general-standards), describing whether your software is:
+-   Paste your responses to our [*General Standard* **G1.1** here](https://stats-devguide.ropensci.org/standards.html#general-standards), describing whether your software is:
 
     - *The first implementation of a novel algorithm*; or
     - *The first implementation within* **R** *of an algorithm which has previously been implemented in other languages or contexts*; or
@@ -49,25 +68,33 @@ Version accepted: TBD
 
 ## Badging
 
--    What grade of badge are you aiming for? ([bronze, silver, gold](https://ropenscilabs.github.io/statistical-software-review-book/pkgdev.html#pkgdev-badges))
+-    What grade of badge are you aiming for? ([bronze, silver, gold](https://stats-devguide.ropensci.org/pkgdev.html#pkgdev-badges))
 
--    If aiming for silver or gold, describe which of the [four aspects listed in the *Guide for Authors* chapter](https://ropenscilabs.github.io/statistical-software-review-book/pkgdev.html#pkgdev-silver) the package fulfils (at least one aspect for silver; three for gold)
+-    If aiming for silver or gold, describe which of the [four aspects listed in the *Guide for Authors* chapter](https://stats-devguide.ropensci.org/pkgdev.html#pkgdev-silver) the package fulfils (at least one aspect for silver; three for gold)
 
 
 ## Technical checks
 
 Confirm each of the following by checking the box.
 
-- [ ] I/we have read the [guide for authors](https://devguide.ropensci.org/guide-for-authors.html) and [rOpenSci packaging guide](https://devguide.ropensci.org/building.html).
-- [ ] I/we have read the [*Statistical Software Peer Review* Guide for Authors](https://ropenscilabs.github.io/statistical-software-review-book/pkgdev.html).
-- [ ] I/we have run [`autotest`](https://github.com/ropenscilabs/autotest) checks on the package, and ensured no tests fail.
-- [ ] The [`srr_stats_pre_submit()` function](https://ropenscilabs.github.io/srr/reference/srr_stats_pre_submit.html) confirms this package may be submitted.
+- [ ] I have read the [rOpenSci packaging guide](https://devguide.ropensci.org/building.html).
+- [ ] I have read the [author guide](https://devguide.ropensci.org/softwarereview_author.html) and I expect to maintain this package for at least 2 years or have another maintainer identified.
+- [ ] I/we have read the [*Statistical Software Peer Review* Guide for Authors](https://stats-devguide.ropensci.org/pkgdev.html).
+- [ ] I/we have run [`autotest`](https://github.com/ropensci-review-tools/autotest) checks on the package, and ensured no tests fail.
+- [ ] The [`srr_stats_pre_submit()` function](https://ropensci-review-tools.github.io/srr/reference/srr_stats_pre_submit.html) confirms this package may be submitted.
+- [ ] The [`pkgcheck()` function](https://docs.ropensci.org/pkgcheck/reference/pkgcheck.html) confirms this package may be submitted - alternatively, please explain reasons for any checks which your package is unable to pass.
 
 This package:
 
 - [ ] does not violate the Terms of Service of any service it interacts with.
 - [ ] has a CRAN and OSI accepted license.
-- [ ] contains a [README with instructions for installing the development version](https://ropensci.github.io/dev_guide/building.html#readme).
+- [ ] contains a [README with instructions for installing the development version](https://devguide.ropensci.org/building.html#readme).
+
+## Use of Generative AI
+
+- [ ] Generative AI tools were used to produce some of the material in this submission.
+
+If so, please describe usage, and include links to any relevant aspects of your repository. See [our blog post](https://ropensci.org/blog/2026/02/26/ropensci-ai-policy/) for background. (Explicit advice is not yet included in our _Dev Guide_; we are hoping to update very soon, and ask your cooperation and transparency in the meantime.)
 
 ## Publication options
 
@@ -77,4 +104,4 @@ This package:
 
 ## Code of conduct
 
-- [ ] I agree to abide by [rOpenSci's Code of Conduct](https://ropensci.github.io/dev_guide/policies.html#code-of-conduct) during the review process and in maintaining my package should it be accepted.
+- [ ] I agree to abide by [rOpenSci's Code of Conduct](https://ropensci.org/code-of-conduct/) during the review process and in maintaining my package should it be accepted.
